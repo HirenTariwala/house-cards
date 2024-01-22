@@ -4,10 +4,16 @@ import { HouseDataType } from "../types";
 
 export const useHousesHook = () => {
   const [housesData, setHousesData] = useState<HouseDataType[]>();
+  const [loading, setLoading] = useState<boolean>(true);
 
   const getHouseData = async () => {
-    const data = await getHousesData();
-    setHousesData(data);
+    try {
+      const data = await getHousesData();
+      setHousesData(data);
+      setLoading(false);
+    } catch (err) {
+      setLoading(false);
+    }
   };
   useEffect(() => {
     getHouseData();
@@ -15,5 +21,6 @@ export const useHousesHook = () => {
 
   return {
     housesData,
+    loading,
   };
 };

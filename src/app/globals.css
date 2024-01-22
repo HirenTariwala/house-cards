@@ -17,6 +17,7 @@
 }
 
 body {
+  height: 100vh;
   color: rgb(var(--foreground-rgb));
   font-family: "verdana", arial, helvetica, sans-serif;
 }
